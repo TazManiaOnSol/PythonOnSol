@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python_On_Sol Clicker Game</title>
+<style>
+ body {
+    font-family: 'Orbitron', sans-serif;
+    background: url('dd.gif') no-repeat center center fixed, linear-gradient(to right, #a200ff, #FF00FF, #00ff22);
+    background-size: cover, 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: #00ff00;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+#clickerContainer {
+    position: relative;
+}
+#clickerImage {
+    width: 300px;
+    height: 200px;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+    animation: pulse 1s infinite alternate;
+    transition: transform 0.2s ease;
+}
+#clickerImage:hover {
+    transform: scale(1.1);
+}
+#counter {
+    font-size: 48px;
+    margin-top: 20px;
+    color: #00ff00;
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00;
+    animation: glow 1s infinite alternate;
+    transition: font-size 0.2s ease;
+}
+#counter:hover {
+    font-size: 52px;
+}
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00;
+    }
+    100% {
+        text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00;
+    }
+}
+#positiveMessage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: #00ff00;
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00;
+    animation: fadeOut 2s ease forwards;
+    opacity: 0;
+    display: none;
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+#progressBarContainer {
+    width: 50%;
+    margin: 20px auto;
+    background-color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+}
+#progressBar {
+    width: 0%;
+    height: 30px;
+    background-color: #00ff00;
+    transition: width 0.5s ease;
+}
+#levelText {
+    font-size: 20px;
+    margin-top: 10px;
+}
+#claimNFTButton {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#claimNFTButton:disabled {
+    background-color: #666;
+    cursor: not-allowed;
+}
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap">
+</head>
+<body>
+    <audio src="d.mp3" autoplay loop></audio>
+    <div id="clickerContainer">
+        <h1> Python_On_Sol Clicker Game</h1>
+        <img id="clickerImage" src="dd1.gif" alt="Click Me!">
+        <div id="counter">0</div>
+        <div id="positiveMessage"></div>
+        <div id="progressBarContainer">
+            <div id="progressBar"></div>
+        </div>
+        <div id="levelText">Level 1</div>
+        <button id="claimNFTButton" disabled>Claim NFT</button>
+    </div>
+    
+    <script>
+        // Initialize counter
+        let counter = 0;
+        // Get reference to the image, counter, and positiveMessage elements
+        const clickerImage = document.getElementById('clickerImage');
+        const counterElement = document.getElementById('counter');
+        const positiveMessageElement = document.getElementById('positiveMessage');
+        const progressBarElement = document.getElementById('progressBar');
+        const levelTextElement = document.getElementById('levelText');
+        const claimNFTButton = document.getElementById('claimNFTButton');
+
+        // Add click event listener to the image
+        clickerImage.addEventListener('click', function() {
+            // Increment counter
+            counter++;
+            // Update counter text
+            counterElement.textContent = counter;
+
+            // Show positive message
+            if (counter === 100) {
+                showPositiveMessage("Continue, we're almost there!");
+            } else if (counter === 10000) {
+                showPositiveMessage("Level 1 reached!");
+                updateLevelText("Level 2");
+            } else if (counter === 100000) {
+                showPositiveMessage("Level 2 reached!");
+                updateLevelText("The King");
+            } else if (counter === 1000000) {
+                showPositiveMessage("You're The King!");
+                updateLevelText("The King");
+                claimNFTButton.disabled = false;
+            }
+
+            // Update progress bar
+            updateProgressBar();
+
+            // Add animation class to image
+            clickerImage.classList.add('animate');
+            // Remove animation class after 0.5s
+            setTimeout(() => {
+                clickerImage.classList.remove('animate');
+            }, 500);
+        });
+
+        function showPositiveMessage(message) {
+            positiveMessageElement.textContent = message;
+            positiveMessageElement.style.display = 'block';
+            setTimeout(() => {
+                positiveMessageElement.style.display = 'none';
+            }, 2000); // Hide message after 2 seconds
+        }
+
+        function updateProgressBar() {
+            let progress;
+            if (counter < 10000) {
+                progress = (counter / 10000) * 100;
+            } else if (counter < 100000) {
+                progress = ((counter - 10000) / 90000) * 100;
+            } else if (counter < 1000000) {
+                progress = ((counter - 100000) / 900000) * 100;
+            } else {
+                progress = 100;
+            }
+            progressBarElement.style.width = progress + '%';
+        }
+
+        function updateLevelText(level) {
+            levelTextElement.textContent = level;
+        }
+
+        claimNFTButton.addEventListener('click', function() {
+            // Redirect to the URL for claiming NFT (replace 'URL_HERE' with your actual URL)
+            window.location.href = 'URL_HERE';
+        });
+    </script>
+ 
+</body>
+</html>

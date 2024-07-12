@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python_On_Sol  Roadmap</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Changa', sans-serif;
+            background-image: url('image.png');
+            background-size: cover; /* Cover the entire background */
+            background-attachment: fixed; /* Keep the background fixed */
+            background-position: center;
+            color: #fff;
+        }
+
+        .phase {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .neon-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, #00ffea, #0062ff);
+            border-radius: 10px;
+            animation: neon-animation 20s infinite alternate;
+        }
+
+        @keyframes neon-animation {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(100%);
+            }
+        }
+
+        h2 {
+            color: #fff;
+            text-align: center;
+        }
+
+        p {
+            color: #ccc;
+            text-align: center;
+        }
+
+        .home-button {
+            display: block;
+            width: 100px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #10c094;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .home-button:hover {
+            background-color: #18d66e;
+        }
+
+        /* Media queries for smaller screens */
+        @media screen and (max-width: 768px) {
+            .phase {
+                width: 70%; /* Adjust width for smaller screens */
+            }
+
+            h2 {
+                font-size: 20px; /* Adjust font size for smaller screens */
+            }
+
+            p {
+                font-size: 16px; /* Adjust font size for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="phase">
+    <div class="neon-line"></div>
+    <h2>Phase 1: Building Our Foundation</h2>
+    <p>Goal: Reach 1000 holders of our cryptocurrency.</p>
+</div>
+
+<div class="phase">
+    <div class="neon-line"></div>
+    <h2>Phase 2: Expanding Our Reach</h2>
+    <p>Goal: Achieve 1000 members on our Telegram community.</p>
+</div>
+
+<div class="phase">
+    <div class="neon-line"></div>
+    <h2>Phase 3: Investing in Growth</h2>
+    <p>Goal: Allocate resources for DEX screener updates and increase visibility on Solana trending lists.</p>
+</div>
+
+<div class="phase">
+    <div class="neon-line"></div>
+    <h2>Phase 4: Unveiling Utility and Value</h2>
+    <p>Goal: Reveal the utility and real-world applications of our cryptocurrency.</p>
+</div>
+
+<a href="https://solexo.onrender.com/" class="home-button">Home</a>
+
+</body>
+</html>

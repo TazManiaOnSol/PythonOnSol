@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Project Rewards</title>
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Changa', sans-serif;
+    background-image: url('image.png');
+    background-size: cover; /* Cover the entire background */
+    background-attachment: fixed; /* Keep the background fixed */
+    background-position: center;
+    color: #fff;
+}
+
+.phase {
+    width: 80%;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    position: relative;
+}
+
+.neon-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #17b68e, #ffffff);
+    border-radius: 10px;
+    animation: neon-animation 7s infinite alternate;
+}
+
+@keyframes neon-animation {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+
+h2, p {
+    text-align: center;
+}
+
+.loading-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #222;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: #00ffea;
+    animation: progress-animation 24h linear forwards;
+}
+
+@keyframes progress-animation {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.coming-soon {
+    font-size: 3rem;
+    text-align: center;
+    opacity: 0;
+    animation: fade-in 3s 1.5s forwards;
+}
+
+.claim-button, .home-button {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 15px;
+    text-align: center;
+    background-color: #10c094;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.claim-button:hover, .home-button:hover {
+    background-color: #17b68e;
+}
+
+.home-button {
+    width: 100px;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Media queries for smaller screens */
+@media screen and (max-width: 768px) {
+    .phase {
+        width: 90%; /* Adjust width for smaller screens */
+    }
+
+    .neon-line {
+        height: 8px; /* Decrease neon line height for smaller screens */
+    }
+
+    .loading-bar {
+        margin-bottom: 10px; /* Decrease margin bottom for loading bar */
+    }
+
+    .coming-soon {
+        font-size: 2rem; /* Adjust font size for smaller screens */
+    }
+
+    .claim-button, .home-button {
+        width: 150px; /* Adjust button width for smaller screens */
+        font-size: 16px; /* Adjust button font size for smaller screens */
+        padding: 12px 20px; /* Adjust button padding for smaller screens */
+    }
+}
+
+    </style>
+</head>
+<body>
+
+<div class="phase">
+  <div class="neon-line"></div>
+  <h2>Rewards Coming Soon</h2>
+  <div class="loading-bar">
+    <div class="progress-bar"></div>
+  </div>
+</div>
+
+<div class="coming-soon">Coming Soon</div>
+
+<a href="https://solexo.onrender.com/" class="home-button">Home</a>
+<a href="claim.html" class="claim-button">Claim</a>
+
+</body>
+</html>
